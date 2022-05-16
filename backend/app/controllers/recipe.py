@@ -1,8 +1,10 @@
-from fastapi import APIRouter
+import app.services.clarifai as clarifai_service
+from fastapi import APIRouter, File
 
 router = APIRouter()
 
 
-@router.get("/")
-def get_home():
-    return "Home"
+@router.post("/")
+def get_reciepes(image: bytes = File(default=None)):
+    ingredient_name = clarifai_service.get_ingredient_name(image)
+    print(ingredient_name)

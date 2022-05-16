@@ -1,18 +1,27 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "Local Receipe API",
+        "title": "Local Recipe API",
         "description": "API to find local recipes for unknown ingredients",
         "version": "0.1.0"
     },
     "paths": {
         "/": {
-            "get": {
+            "post": {
                 "tags": [
-                    "Receipes"
+                    "Recipes"
                 ],
-                "summary": "Get Home",
-                "operationId": "get_home__get",
+                "summary": "Get Reciepes",
+                "operationId": "get_reciepes__post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_get_reciepes__post"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -61,6 +70,17 @@
     },
     "components": {
         "schemas": {
+            "Body_get_reciepes__post": {
+                "title": "Body_get_reciepes__post",
+                "type": "object",
+                "properties": {
+                    "image": {
+                        "title": "Image",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
             "Error": {
                 "title": "Error",
                 "required": [
