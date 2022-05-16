@@ -1,6 +1,7 @@
 import json
 
 from fastapi.openapi.utils import get_openapi
+
 from main import fastapi_app
 
 print(

@@ -1,22 +1,22 @@
 .PHONY: install-api-requirements
 install-api-requirements:
-	pip install -r backend/requirements.txt
+	pip install -r requirements.txt
 
 
 .PHONY: format-api
 format-api:
-	black backend && \
-	isort backend
+	black *.py && \
+	isort *.py
 
 
-PHONY: generate-openapi
+.PHONY: generate-openapi
 generate-openapi:
-	cd backend && source ./env-sample && python generate-openapi.py > openapi.json
+	source ./env-sample && python generate-openapi.py > app/openapi.json
 
 
 .PHONY: run-api-locally
 run-api-locally:
-	cd backend && uvicorn main:fastapi_app --reload 
+	uvicorn main:fastapi_app --reload 
 
 .PHONY: export-variables
 export-variables:

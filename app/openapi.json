@@ -27,7 +27,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipes"
+                                }
                             }
                         }
                     },
@@ -91,6 +93,60 @@
                     "message": {
                         "title": "Message",
                         "type": "string"
+                    }
+                }
+            },
+            "Recipe": {
+                "title": "Recipe",
+                "required": [
+                    "title",
+                    "ingredients",
+                    "steps",
+                    "image"
+                ],
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "ingredients": {
+                        "title": "Ingredients",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "steps": {
+                        "title": "Steps",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "image": {
+                        "title": "Image",
+                        "type": "string"
+                    }
+                }
+            },
+            "Recipes": {
+                "title": "Recipes",
+                "required": [
+                    "ingredient_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "ingredient_name": {
+                        "title": "Ingredient Name",
+                        "type": "string"
+                    },
+                    "recipes": {
+                        "title": "Recipes",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Recipe"
+                        }
                     }
                 }
             }

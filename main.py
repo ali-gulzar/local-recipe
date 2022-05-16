@@ -1,8 +1,9 @@
-import app.controllers.recipe as recipe_controller
-import app.models.api as api_models
-from fastapi import Depends, FastAPI, status
+from fastapi import FastAPI, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+
+import app.controllers.recipe as recipe_controller
+import app.models.api as api_models
 
 API_RESPONSES = {
     status.HTTP_400_BAD_REQUEST: {"model": api_models.Error},
