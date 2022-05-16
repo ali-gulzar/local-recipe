@@ -1,8 +1,8 @@
 from fastapi import APIRouter, File
 
-import app.models.api as api_model
-import app.services.clarifai as clarifai_service
-import app.services.database as database_service
+import application.models.api as api_model
+import application.services.clarifai as clarifai_service
+import application.services.database as database_service
 
 
 router = APIRouter()

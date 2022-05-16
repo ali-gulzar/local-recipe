@@ -2,21 +2,22 @@
 install-api-requirements:
 	pip install -r requirements.txt
 
-
 .PHONY: format-api
 format-api:
 	black *.py && \
 	isort *.py
 
-
 .PHONY: generate-openapi
 generate-openapi:
 	source ./env-sample && python generate-openapi.py > app/openapi.json
 
-
 .PHONY: run-api-locally
 run-api-locally:
-	uvicorn main:fastapi_app --reload 
+	uvicorn main:app --reload 
+
+.PHONY: deploy
+deploy:
+	deta deploy
 
 .PHONY: export-variables
 export-variables:
