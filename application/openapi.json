@@ -20,7 +20,8 @@
                                 "$ref": "#/components/schemas/Body_get_reciepes__post"
                             }
                         }
-                    }
+                    },
+                    "required": true
                 },
                 "responses": {
                     "200": {
@@ -74,6 +75,9 @@
         "schemas": {
             "Body_get_reciepes__post": {
                 "title": "Body_get_reciepes__post",
+                "required": [
+                    "image"
+                ],
                 "type": "object",
                 "properties": {
                     "image": {

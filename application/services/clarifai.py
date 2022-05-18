@@ -15,7 +15,7 @@ stub = service_pb2_grpc.V2Stub(channel)
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 
 
-def get_ingredient_name(image_bytes):
+def get_ingredient_name(image: bytes):
     post_model_outputs_response = stub.PostModelOutputs(
         service_pb2.PostModelOutputsRequest(
             user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
@@ -23,7 +23,7 @@ def get_ingredient_name(image_bytes):
             inputs=[
                 resources_pb2.Input(
                     data=resources_pb2.Data(
-                        image=resources_pb2.Image(base64=image_bytes)
+                        image=resources_pb2.Image(base64=image)
                     )
                 )
             ],

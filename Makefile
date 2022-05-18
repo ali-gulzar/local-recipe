@@ -9,7 +9,7 @@ format-api:
 
 .PHONY: generate-openapi
 generate-openapi:
-	source ./env-sample && python generate-openapi.py > app/openapi.json
+	source ./env-sample && python generate-openapi.py > application/openapi.json
 
 .PHONY: run-api-locally
 run-api-locally:
@@ -21,4 +21,4 @@ deploy:
 
 .PHONY: export-variables
 export-variables:
-	source ./backend/environment-variables.sh
+	source environment-variables.sh
