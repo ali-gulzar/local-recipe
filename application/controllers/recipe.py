@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile
+from fastapi import APIRouter, UploadFile, File
 
 import application.models.api as api_model
 import application.services.clarifai as clarifai_service
@@ -9,7 +9,7 @@ router = APIRouter()
 
 
 @router.post("/", response_model=api_model.Recipes)
-async def get_reciepes(image: UploadFile):
+async def get_reciepes(image: UploadFile = File(...)):
     image_bytes = await image.read()
     ingredient_name = clarifai_service.get_ingredient_name(image_bytes)
     recipes = [api_model.Recipe.parse_obj(recipe) for recipe in database_service.fetch_recipes(ingredient_name)]
